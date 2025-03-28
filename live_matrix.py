@@ -5,9 +5,6 @@ Initializes a NumPy matrix to represent the pixel colors.
 
 Provides a global access point to the matrix for other Python files.
 """
-
-import numpy as np
-
 # matrix_manager.py
 import numpy as np
 
