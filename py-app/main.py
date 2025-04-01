@@ -1,12 +1,19 @@
 from kivy_render import TextureApp
 from live_matrix import MatrixManager
+from text_renderer import TextRenderer 
 import threading
 import time
 import random
 
+matrix = MatrixManager()
+
 def update_matrix_colors():
     """Function to update matrix colors every second"""
-    matrix = MatrixManager()
+    # Initialize the TextRenderer
+    font_path = "/Users/aleccandidato/Projects/Graphics/py-app/fonts/ComicMono-Bold.ttf"  # Update with the path to your font file
+    font_size = 20
+    text_renderer = TextRenderer(font_path, font_size)
+
     while True:
         # Generate random colors for demonstration
         # Each color is an RGBA tuple with values 0-255
@@ -20,6 +27,9 @@ def update_matrix_colors():
         # Update the entire matrix with the new color
         matrix.update_region(0, 0, matrix.width, matrix.height, color)
         
+        # Render "Hello, World!" at the top-left corner
+        text_renderer.render_text("Hello, World!", 0, 0, (255, 255, 255, 255))  # White color
+
         # Wait for 1 second before next update
         time.sleep(1)
 
